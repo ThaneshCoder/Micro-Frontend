@@ -1,11 +1,15 @@
-import "./App.css";
-import DemoComp from "./components/DemoComp";
+
+import Summary from "./components/Summary";
+import './App.css'
 
 function App() {
   return (
-    <>
-      <DemoComp />
-    </>
+    <div >
+      <Summary />
+      <div className="bg-slate-600">
+        hello
+      </div>
+    </div>
   );
 }
 
