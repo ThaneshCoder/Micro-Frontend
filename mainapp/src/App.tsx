@@ -7,6 +7,7 @@ function App() {
     <>
       <SampleComp />
       <DemoComp />
+      <h1>This is mainapp</h1>
     </>
   );
 }
