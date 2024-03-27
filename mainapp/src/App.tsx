@@ -1,13 +1,15 @@
+// import SampleComp from "serviceone/SampleComp";
+// import DemoComp from 'servicetwo/DemoComp';
+import LoginPage from "./components/LoginPage";
 import "./App.css";
-import SampleComp from "serviceone/SampleComp";
-import DemoComp from 'servicetwo/DemoComp';
+import Demo from "./components/Demo";
 
 function App() {
   return (
-    <>
-      <SampleComp />
-      <DemoComp />
-    </>
+    <div>
+      <LoginPage />
+      <Demo/>
+    </div>
   );
 }
 
