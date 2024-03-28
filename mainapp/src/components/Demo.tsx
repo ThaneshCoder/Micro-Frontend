@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { Tanay } from "../redux/Store";
+import { RootStore } from "../redux/Store";
 
 const Demo = () => {
-  let selector = useSelector((state: Tanay) => state.product.allProducts);
+  let selector = useSelector((state: RootStore) => state.product.allProducts);
 
   return (
     <div>
