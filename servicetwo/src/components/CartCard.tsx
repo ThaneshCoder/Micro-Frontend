@@ -11,15 +11,15 @@ interface IndiValue {
 
 // Define the props interface for the CartCard component
 interface CartCardProps {
-  indi: IndiValue;
+  singleProduct: IndiValue;
 }
 
-const CartCard: React.FC<CartCardProps> = ({ indi }) => {
+const CartCard: React.FC<CartCardProps> = ({ singleProduct }) => {
   return (
     <div className='card'>
       <div style={{ width: "250px", margin: '5px', backgroundColor: 'white' }}>
         <div style={{ height: "80%", margin: "auto" }}>
-          <img src={indi.image} alt="" height='100%' width="100%" />
+          <img src={singleProduct.image} alt="" height='100%' width="100%" />
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-evenly', margin: '15px', textAlign: 'center' }}>
 
@@ -28,16 +28,16 @@ const CartCard: React.FC<CartCardProps> = ({ indi }) => {
           <button style={{ width: '25%' }}>+</button>
         </div>
       </div>
-      <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', justifyContent: "space-around" }}>
+      <div  style={{ padding: '20px', display: 'flex', flexDirection: 'column', justifyContent: "space-around" }}>
 
         <Typography component="div" variant="h4">
-          {indi.name}
+          {singleProduct.name}
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" component="div">
-          {indi.model}
+          {singleProduct.model}
         </Typography>
         <Typography variant="h5" color="text" component="div">
-          {indi.price} /- Rs only
+          {singleProduct.price} /- Rs only
         </Typography>
 
         <div>
