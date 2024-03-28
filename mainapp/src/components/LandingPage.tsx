@@ -3,22 +3,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
 import CardComp from "serviceone/CardComp";
+import { useSelector } from 'react-redux';
+import { RootStore } from "../redux/Store";
 
-interface Product {
-    image: string;
-    name: string;
-    model: string;
-    price: number;
-    discount: number;
-    category: string;
-    total: number;
-  }
+const LandingPage = () => {
+  let selector = useSelector((state: RootStore) => state.product.allProducts);
 
-interface LandingPageProps {
-  product: Product[]; // Adjust the type according to your actual data structure
-}
-
-const LandingPage: React.FC<LandingPageProps> = ({ product }) => {
   const navigate = useNavigate();
 
   return (
@@ -46,7 +36,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ product }) => {
           </Toolbar>
         </AppBar>
       </Box>
-      <CardComp productCard={product} />
+      <CardComp productCard={selector} />
     </div>
   );
 };
