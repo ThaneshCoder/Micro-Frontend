@@ -1,10 +1,9 @@
-
 import Summary from "./components/Summary";
-import './App.css'
+import "./App.css";
 
 function App() {
   return (
-    <div >
+    <div>
       <Summary />
     </div>
   );

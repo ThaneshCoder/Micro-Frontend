@@ -1,10 +1,11 @@
-import "./App.css";
-import SampleComp from "./components/SampleComp";
+import CardComp from "./components/CardComp";
+// import SampleComp from "./components/SampleComp";
 
 function App() {
   return (
     <>
-      <SampleComp />
+      {/* <SampleComp /> */}
+      <CardComp />
     </>
   );
 }
