@@ -10,7 +10,7 @@ export default defineConfig({
       name: "servicetwo",
       filename: "remoteEntryTwo.js",
       exposes: {
-        "./DemoComp": "./src/components/DemoComp.tsx",
+        "./Summary": "./src/components/Summary.tsx",
       },
       shared: ["react"],
     }),

@@ -1,14 +1,17 @@
-// import SampleComp from "serviceone/SampleComp";
-// import DemoComp from 'servicetwo/DemoComp';
+import SampleComp from "serviceone/SampleComp";
+// import Summary from 'servicetwo/Summary';
 import LoginPage from "./components/LoginPage";
-import "./App.css";
 import Demo from "./components/Demo";
+import Cart from "./components/Cart";
 
 function App() {
   return (
     <div>
-      <LoginPage />
-      <Demo/>
+      <SampleComp/>
+      {/* <LoginPage />
+      <Demo/> */}
+      <h1 className="bg-slate-500">This is main</h1>
+      <Cart/>
     </div>
   );
 }

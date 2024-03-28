@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { Container } from "@mui/material";
+import "../App.css";
 import "../Style.scss"
 
 type Inputs = {
@@ -59,5 +60,3 @@ function LoginPage() {
   );
 }
 export default LoginPage;
-
-

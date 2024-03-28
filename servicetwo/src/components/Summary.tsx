@@ -19,7 +19,7 @@ const Summary: React.FC = () => {
   return (
     <div>
       {allProduct.map((product, index) => (
-        <CartCard key={index} indi={product} />
+        <CartCard key={index} singleProduct={product} />
       ))}
     </div>
   );
