@@ -57,9 +57,8 @@ navigate("./servicelist")
           {errors.password && <span>{errors.password.message}</span>}
           <p></p>
           <input type="submit" onClick={gotolandingpage} />
-          {/* {submitted && <div style={{color:"green"}}>Form submitted successfully!</div>} */}
+          {submitted && <div style={{color:"green"}}>Form submitted successfully!</div>}
         </form>
-       
       </Container>
     </div>
   );

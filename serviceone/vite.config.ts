@@ -10,7 +10,7 @@ export default defineConfig({
       name: "serviceone",
       filename: "remoteEntryOne.js",
       exposes: {
-        "./SampleComp": "./src/components/SampleComp.tsx",
+        "./CardComp": "./src/components/CardComp.tsx",
       },
       shared: ["react"],
     }),

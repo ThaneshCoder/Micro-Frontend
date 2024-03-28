@@ -3,14 +3,20 @@ import { useNavigate } from "react-router";
 
 export const ServicesList = () => {
   const navigate = useNavigate();
-  const gotodemo = () => {
-    navigate("/demo");
+  const gotoproduct = () => {
+    navigate("/product");
   };
 
+const gotocart = () => {
+    navigate("/cart");
+  };
   return (
-    <div onClick={gotodemo}>
-      <Card sx={{ minWidth: 275 }}>
+    <div >
+      <Card sx={{ minWidth: 275 }} onClick={gotoproduct} >
         <CardContent>service one</CardContent>
+      </Card>
+      <Card sx={{ minWidth: 275 }} onClick={gotocart} >
+        <CardContent>service Two</CardContent>
       </Card>
     </div>
   );
