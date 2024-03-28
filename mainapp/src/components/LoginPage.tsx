@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container } from "@mui/material";
 import "../App.css";
 import "../Style.scss"
+import { useNavigate } from "react-router";
 
 type Inputs = {
   username: string;
@@ -27,6 +28,10 @@ function LoginPage() {
     }, 2000); // Clear message after 3 seconds
   };
 
+  const navigate =useNavigate()
+ let gotolandingpage=()=>{
+navigate("./servicelist")
+ }
   return (
     <div className="myfont" >
       <Container>
@@ -51,8 +56,8 @@ function LoginPage() {
           ></input>
           {errors.password && <span>{errors.password.message}</span>}
           <p></p>
-          <input type="submit" />
-          {submitted && <div style={{color:"green"}}>Form submitted successfully!</div>}
+          <input type="submit" onClick={gotolandingpage} />
+          {/* {submitted && <div style={{color:"green"}}>Form submitted successfully!</div>} */}
         </form>
        
       </Container>
