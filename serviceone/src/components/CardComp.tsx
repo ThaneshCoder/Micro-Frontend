@@ -8,7 +8,9 @@ import products from "../../../AllProduct.json";
 export default function CardComp() {
   return (
     <>
-      <h1 className="underline">This is card component</h1>
+      <h1 className="text-3xl font-bold underline hover:text-sky-400">
+        This is card component
+      </h1>
       {products.AllProduct.map((product, index) => (
         <Card key={index} sx={{ maxWidth: 345 }}>
           <CardActionArea>
