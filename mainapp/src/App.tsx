@@ -1,8 +1,8 @@
 import LoginPage from "./components/LoginPage";
-import "./App.css";
 import Demo from "./components/Demo";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ServicesList } from "./components/ServicesList";
+import Cart from "./components/Cart";
 
 function App() {
   return (

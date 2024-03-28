@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { Container } from "@mui/material";
+import "../App.css";
 import "../Style.scss"
 import { useNavigate } from "react-router";
 
@@ -64,5 +65,3 @@ navigate("./servicelist")
   );
 }
 export default LoginPage;
-
-

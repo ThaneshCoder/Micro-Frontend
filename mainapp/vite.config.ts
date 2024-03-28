@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "host-app",
+      name: "mainapp",
       remotes: {
-        serviceone: "http://localhost:4173/assets/remoteEntryOne.js",
-        servicetwo: "http://localhost:4174/assets/remoteEntryTwo.js",
+        serviceone: "http://localhost:5001/assets/remoteEntryOne.js",
+        servicetwo: "http://localhost:5002/assets/remoteEntryTwo.js",
       },
       shared: ["react"],
     }),
