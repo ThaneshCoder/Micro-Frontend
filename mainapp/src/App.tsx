@@ -1,23 +1,18 @@
 import LoginPage from "./components/LoginPage";
-// import Demo from "./components/Demo";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ServicesList } from "./components/ServicesList";
 import Summary from 'servicetwo/Summary';
-import CardComp from 'serviceone/CardComp';
-import { useSelector } from 'react-redux';
-import { RootStore } from "./redux/Store";
+import LandingPage from "./components/LandingPage";
 
 function App() {
-  let selector = useSelector((state: RootStore) => state.product.allProducts);
-
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/servicelist" element={<ServicesList />} />
-          <Route path="/product" element={<CardComp />} />
-          <Route path="/cart" element={<Summary product={selector} />} />
+          <Route path="/product" element={<LandingPage />} />
+          <Route path="/cart" element={<Summary />} />
         </Routes>
       </BrowserRouter>
     </div>
