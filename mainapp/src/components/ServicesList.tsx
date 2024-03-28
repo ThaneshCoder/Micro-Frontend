@@ -7,15 +7,15 @@ export const ServicesList = () => {
     navigate("/product");
   };
 
-const gotocart = () => {
+  const gotocart = () => {
     navigate("/cart");
   };
   return (
-    <div >
-      <Card sx={{ minWidth: 275 }} onClick={gotoproduct} >
+    <div>
+      <Card sx={{ minWidth: 275 }} onClick={gotoproduct}>
         <CardContent>service one</CardContent>
       </Card>
-      <Card sx={{ minWidth: 275 }} onClick={gotocart} >
+      <Card sx={{ minWidth: 275 }} onClick={gotocart}>
         <CardContent>service Two</CardContent>
       </Card>
     </div>
