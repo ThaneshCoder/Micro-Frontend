@@ -5,22 +5,14 @@ import CardComp from "serviceone/CardComp";
 import { useSelector } from "react-redux";
 import { RootStore } from "../redux/Store";
 
-// interface Product {
-//     image: string;
-//     name: string;
-//     model: string;
-//     price: number;
-//     discount: number;
-//     category: string;
-//     total: number;
-//   }
-
-// interface LandingPageProps {
-//   product: Product[]; // Adjust the type according to your actual data structure
-// }
-
 const LandingPage= () => {
   let selector = useSelector((state: RootStore) => state.product.allProducts);
+import { useSelector } from 'react-redux';
+import { RootStore } from "../redux/Store";
+
+const LandingPage = () => {
+  let selector = useSelector((state: RootStore) => state.product.allProducts);
+
   const navigate = useNavigate();
 
   return (

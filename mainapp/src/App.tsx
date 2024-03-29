@@ -5,7 +5,6 @@ import Summary from 'servicetwo/Summary';
 import LandingPage from "./components/LandingPage";
 
 function App() {
-
   return (
     <div>
       <BrowserRouter>

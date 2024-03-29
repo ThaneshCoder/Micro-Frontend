@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartCard from "./CartCard";
-import prod from '../../../AllProduct.json';
 
 interface IndiValue {
   image: string;
@@ -9,12 +8,12 @@ interface IndiValue {
   price: number;
 }
 
-const Summary: React.FC = () => {
+const Summary: React.FC<{ product: IndiValue[] }> = ({ product }) => {
   const [allProduct, setAllProduct] = useState<IndiValue[]>([]);
 
   useEffect(() => {
-    setAllProduct(prod.AllProduct);
-  }, []);
+    setAllProduct(product);
+  }, [product]); // Run effect whenever product prop changes
 
   return (
     <div>
