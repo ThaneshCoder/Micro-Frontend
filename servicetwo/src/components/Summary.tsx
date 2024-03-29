@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import CartCard from "./CartCard";
 
 interface IndiValue {
-  image: string;
   name: string;
   model: string;
   price: number;
+  discount: number;
+  category: string;
+  total: number;
+  image: string;
 }
 
 const Summary: React.FC<{ product: IndiValue[] }> = ({ product }) => {

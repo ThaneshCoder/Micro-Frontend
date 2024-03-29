@@ -1,30 +1,37 @@
-import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useEffect, useState } from "react";
 
-interface Product {
-  image: string;
+// Define Product interface with a different name
+interface IndiValue {
   name: string;
   model: string;
   price: number;
   discount: number;
   category: string;
   total: number;
+  image: string;
+}[]
+
+interface mainProd {
+  product: IndiValue[]
 }
 
-interface CardCompProps {
-  productCard: Product[];
-}
 
-const CardComp: React.FC<CardCompProps> = ({ productCard }) => {
-  
+const CardComp: React.FC<mainProd> = ({ product }) => {
+  const [allProduct, setAllProduct] = useState<IndiValue[]>([]);
+
+  useEffect(() => {
+    setAllProduct(product);
+  }, [product]); // Run effect whenever product prop changes
+
   return (
     <>
       <div className="flex flex-wrap justify-evenly">
-        {productCard.map((prod, index: number) => (
+        {allProduct?allProduct.map((prod, index: number) => (
           <Card key={index} sx={{ maxWidth: 250, margin: "15px" }}>
             <CardActionArea>
               <CardMedia
@@ -41,16 +48,16 @@ const CardComp: React.FC<CardCompProps> = ({ productCard }) => {
                   {prod.model}
                 </Typography>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  Price : {prod.price}
+                  Price: {prod.price}
                 </Typography>
                 <Typography gutterBottom variant="subtitle2" component="div">
-                  Discount : {prod.discount}
+                  Discount: {prod.discount}
                 </Typography>
                 <Typography gutterBottom variant="h5" component="div">
-                  Category : {prod.category}
+                  Category: {prod.category}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
-                  Quantity : {prod.total}
+                  Quantity: {prod.total}
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -60,10 +67,10 @@ const CardComp: React.FC<CardCompProps> = ({ productCard }) => {
               </Button>
             </CardActions>
           </Card>
-        ))}
+        )):null}
       </div>
     </>
   );
-};
+}
 
-export default CardComp;
+export default CardComp
