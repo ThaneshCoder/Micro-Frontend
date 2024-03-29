@@ -15,14 +15,16 @@ const Summary: React.FC<{ product: IndiValue[] }> = ({ product }) => {
   const [allProduct, setAllProduct] = useState<IndiValue[]>([]);
 
   useEffect(() => {
+    console.log(product);
+    
     setAllProduct(product);
   }, [product]); // Run effect whenever product prop changes
 
   return (
     <div>
-      {allProduct.map((product, index) => (
+      {allProduct?allProduct.map((product, index) => (
         <CartCard key={index} singleProduct={product} />
-      ))}
+      )):null}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box,Toolbar, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Outlet, useNavigate } from 'react-router';
 
@@ -22,7 +22,9 @@ const LandingPage = () => {
           </Toolbar>
         </AppBar>
       </Box>
-      <Outlet/>
+
+      <Outlet />
+
     </div>
   );
 };
