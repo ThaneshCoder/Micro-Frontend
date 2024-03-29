@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
-interface Product {
+interface IndiValue {
   image: string;
   name: string;
   model: string;
@@ -15,16 +15,16 @@ interface Product {
   total: number;
 }
 
-interface CardCompProps {
-  productCard: Product[];
+interface mainProd {
+  product:IndiValue[]
 }
 
-const CardComp: React.FC<CardCompProps> = ({ productCard }) => {
+const CardComp: React.FC<mainProd> = ({product}) => {
   
   return (
     <>
       <div className="flex flex-wrap justify-evenly">
-        {productCard.map((prod, index: number) => (
+        {product?product.map((prod, index: number) => (
           <Card key={index} sx={{ maxWidth: 250, margin: "15px" }}>
             <CardActionArea>
               <CardMedia
@@ -60,7 +60,10 @@ const CardComp: React.FC<CardCompProps> = ({ productCard }) => {
               </Button>
             </CardActions>
           </Card>
-        ))}
+        )
+      
+        )  :null
+      }
       </div>
     </>
   );

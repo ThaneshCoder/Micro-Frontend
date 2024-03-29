@@ -1,4 +1,3 @@
-import Summary from "./components/Summary";
 import "./App.css";
 import jsonProd from '../../AllProduct.json'
 

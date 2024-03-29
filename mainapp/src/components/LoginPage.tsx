@@ -11,31 +11,31 @@ type Inputs = {
 };
 
 function LoginPage() {
+  const navigate =useNavigate()
   const {
     register,
-    handleSubmit,
+     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<Inputs>();
   const [submitted, setSubmitted] = useState<boolean>(false);
 
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
     setSubmitted(true);
+    navigate("./servicelist")
     setTimeout(() => {
       setSubmitted(false);
       reset(); // Clear form data
     }, 2000); // Clear message after 3 seconds
   };
 
-  const navigate =useNavigate()
- let gotolandingpage=()=>{
-navigate("./servicelist")
- }
+ 
   return (
     <div className="myfont" >
       <Container >
-        <form onSubmit={handleSubmit(onSubmit)} className="box" >
+        <form  className="box" >
        <header className="mycolor">Login Page</header>
           <input
             placeholder="username"
@@ -56,7 +56,7 @@ navigate("./servicelist")
           ></input>
           {errors.password && <span>{errors.password.message}</span>}
           <p></p>
-          <input type="submit" onClick={gotolandingpage} />
+          <button onClick={handleSubmit(onSubmit)} >submit</button>
           {submitted && <div style={{color:"green"}}>Form submitted successfully!</div>}
         </form>
       </Container>
