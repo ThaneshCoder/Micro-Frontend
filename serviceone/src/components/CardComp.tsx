@@ -31,6 +31,7 @@ const CardComp: React.FC<mainProd> = ({ product }) => {
     <>
       <div className="flex flex-wrap justify-evenly">
         {allProduct ? allProduct.map((prod, index: number) => (
+
           <Card key={index} sx={{ maxWidth: 250, margin: "15px" }}>
             <CardActionArea>
               {/* <CardMedia
