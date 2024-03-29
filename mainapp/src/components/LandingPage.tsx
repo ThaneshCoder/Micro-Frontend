@@ -1,17 +1,8 @@
 import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useNavigate } from "react-router-dom";
-import CardComp from "serviceone/CardComp";
-import { useSelector } from "react-redux";
-import { RootStore } from "../redux/Store";
-
-const LandingPage= () => {
-  let selector = useSelector((state: RootStore) => state.product.allProducts);
-import { useSelector } from 'react-redux';
-import { RootStore } from "../redux/Store";
+import { Outlet, useNavigate } from 'react-router';
 
 const LandingPage = () => {
-  let selector = useSelector((state: RootStore) => state.product.allProducts);
 
   const navigate = useNavigate();
 
@@ -25,13 +16,13 @@ const LandingPage = () => {
             </Typography>
             <ShoppingCartIcon
               onClick={() => {
-                navigate("/cart");
+                navigate("/landingPage/cart");
               }}
             />
           </Toolbar>
         </AppBar>
       </Box>
-      <CardComp product={selector} />
+      <Outlet/>
     </div>
   );
 };

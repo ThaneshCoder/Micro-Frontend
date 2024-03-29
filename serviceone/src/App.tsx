@@ -1,11 +1,11 @@
-// import CardComp from "./components/CardComp";
-// import prodData from '../../AllProduct.json'
+import CardComp from "./components/CardComp";
+import proData from '../../AllProduct.json'
 
 function App() {
   return (
-  <>
-  {/* <CardComp product={prodData.AllProduct}/> */}
-  </>
+    <>
+      <CardComp product={proData.AllProduct}/>
+    </>
   );
 }
 

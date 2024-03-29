@@ -16,19 +16,22 @@ interface CartCardProps {
 
 const CartCard: React.FC<CartCardProps> = ({ singleProduct }) => {
   return (
-    <div className='card'>
-      <div style={{ width: "250px", margin: '5px', backgroundColor: 'white' }}>
-        <div style={{ height: "80%", margin: "auto" }}>
-          <img src={singleProduct.image} alt="" height='100%' width="100%" />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-evenly', margin: '15px', textAlign: 'center' }}>
+    <div className='flex m-2 bg-slate-300 flex-wrap lg:justify-start md:justify-evenly sm:justify-center hover:bg-slate-200 border-2 border-black' >
+      <div className='flex-col justify-between p-5 bg-white'>
 
-          <button style={{ width: '25%' }}>-</button>
-          <span style={{ width: '50%' }}> 5</span>
-          <button style={{ width: '25%' }}>+</button>
+        <div className='bg-red-500' style={{width:'100%'}}>
+          <img src={singleProduct.image} style={{height:'150px',width:'150px'}} alt=""/>
         </div>
+
+        <div className='flex justify-evenly mt-4 ' >
+          <button className='bg-red-400' style={{width:'30%',height:'100%'}}>-</button>
+          <span className='m-auto'>6</span>
+          <button className='bg-red-400' style={{width:'30%'}}>+</button>
+        </div>
+
       </div>
-      <div  style={{ padding: '20px', display: 'flex', flexDirection: 'column', justifyContent: "space-around" }}>
+      
+      <div className='flex-col p-5 justify-around'>
 
         <Typography component="div" variant="h4">
           {singleProduct.name}

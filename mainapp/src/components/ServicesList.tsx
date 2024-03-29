@@ -4,11 +4,11 @@ import { useNavigate } from "react-router";
 export const ServicesList = () => {
   const navigate = useNavigate();
   const gotoproduct = () => {
-    navigate("/product");
+    navigate("/landingPage/Product");
   };
 
   const gotocart = () => {
-    navigate("/cart");
+    navigate("/landingPage/cart");
   };
   return (
     <div>
