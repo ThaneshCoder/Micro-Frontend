@@ -1,6 +1,5 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -31,15 +30,19 @@ const CardComp: React.FC<mainProd> = ({ product }) => {
   return (
     <>
       <div className="flex flex-wrap justify-evenly">
-        {allProduct?allProduct.map((prod, index: number) => (
+        {allProduct ? allProduct.map((prod, index: number) => (
           <Card key={index} sx={{ maxWidth: 250, margin: "15px" }}>
             <CardActionArea>
-              <CardMedia
+              {/* <CardMedia
                 component="img"
                 height="100"
                 image={prod.image}
                 alt="Product_Image"
-              />
+              /> */}
+              <div className=' p-6 border-b-2' style={{ width: '100%' }}>
+                <img src={prod.image} style={{ height: '300px', width: '300px' }} alt="" />
+              </div>
+              <div className="flex-col justify-between ">
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {prod.name}
@@ -60,14 +63,17 @@ const CardComp: React.FC<mainProd> = ({ product }) => {
                   Quantity: {prod.total}
                 </Typography>
               </CardContent>
-            </CardActionArea>
-            <CardActions>
+              <CardActions>
               <Button size="small" color="primary">
                 Add to Cart
               </Button>
             </CardActions>
+              </div>
+    
+            </CardActionArea>
+  
           </Card>
-        )):null}
+        )) : null}
       </div>
     </>
   );

@@ -16,16 +16,15 @@ interface CartCardProps {
 
 const CartCard: React.FC<CartCardProps> = ({ singleProduct }) => {
   return (
-    <div className='flex m-5 bg-slate-100 flex-wrap lg:justify-start sm:justify-center'>
-      <div className='flex-col justify-between h-58 m-1' style={{width:'180px'}}>
+    <div className='flex m-2 bg-slate-300 flex-wrap lg:justify-start md:justify-evenly sm:justify-center hover:bg-slate-200 border-2 border-black' >
+      <div className='flex-col justify-between p-5 bg-white'>
 
         <div className='bg-red-500' style={{width:'100%'}}>
-          <img src={singleProduct.image} style={{height:'100%',width:'100%'}} alt=""/>
-          {/* <div style={{backgroundImage:`url(${singleProduct.image})`,height:'100%',width:'100%',backgroundSize:'contain'}}></div> */}
+          <img src={singleProduct.image} style={{height:'150px',width:'150px'}} alt=""/>
         </div>
 
-        <div className='flex justify-evenly m-1' >
-          <button className='bg-red-400' style={{width:'30%'}}>-</button>
+        <div className='flex justify-evenly mt-4 ' >
+          <button className='bg-red-400' style={{width:'30%',height:'100%'}}>-</button>
           <span className='m-auto'>6</span>
           <button className='bg-red-400' style={{width:'30%'}}>+</button>
         </div>
