@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea, CardActions } from "@mui/material";
 import { useEffect, useState } from "react";
 
-// Define Product interface with a different name
+// Defined Product interface with a different name
 interface IndiValue {
   id: number;
   name: string;
@@ -39,52 +39,56 @@ const CardComp: React.FC<mainProd> = ({
       <div className="flex flex-wrap justify-evenly">
         {allProduct
           ? allProduct.map((prod) => (
-            <Card key={prod.id} sx={{ maxWidth: 250, margin: "15px", }}>
-              <CardActionArea>
-                <div className=" p-6 border-b-2" style={{ width: "100%" }}>
-                  <img
-                    src={prod.image}
-                    style={{ height: "150px", width: "200px" }}
-                    alt=""
-                  />
-                </div>
-                <div className="flex-col justify-between ">
-                  <CardContent>
-                    <Typography gutterBottom component="div">
-                      {prod.name}
-                    </Typography>
-                    <Typography gutterBottom component="div">
-                      {prod.model}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="subtitle1"
-                      component="div"
+              <Card key={prod.id} sx={{ maxWidth: 250, margin: "15px" }}>
+                <CardActionArea>
+                  <div className=" p-6 border-b-2" style={{ width: "100%" }}>
+                    <img
+                      src={prod.image}
+                      style={{ height: "150px", width: "200px" }}
+                      alt="image"
+                    />
+                  </div>
+                  <div className="flex-col justify-between ">
+                    <CardContent>
+                      <Typography gutterBottom component="div">
+                        {prod.name}
+                      </Typography>
+                      <Typography gutterBottom component="div">
+                        {prod.model}
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle1"
+                        component="div"
+                      >
+                        Price: {prod.price}
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle2"
+                        component="div"
+                      >
+                        Discount: {prod.discount}
+                      </Typography>
+                      <Typography gutterBottom>
+                        Category: {prod.category}
+                      </Typography>
+                      <Typography gutterBottom>
+                        Quantity: {prod.instock}
+                      </Typography>
+                    </CardContent>
+                    <CardActions
+                      onClick={() => {
+                        cartdispatch(cartAction(prod.id));
+                      }}
+                      style={{ width: "100%" }}
                     >
-                      Price: {prod.price}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="subtitle2"
-                      component="div"
-                    >
-                      Discount: {prod.discount}
-                    </Typography>
-                    <Typography gutterBottom>
-                      Category: {prod.category}
-                    </Typography>
-                    <Typography gutterBottom>
-                      Quantity: {prod.instock}
-                    </Typography>
-                  </CardContent>
-                  <CardActions onClick={() => { cartdispatch(cartAction(prod.id));}} style={{width:"100%"}}>
-                    Add to Cart
-                  </CardActions>
-
-                </div>
-              </CardActionArea>
-            </Card>
-          ))
+                      Add to Cart
+                    </CardActions>
+                  </div>
+                </CardActionArea>
+              </Card>
+            ))
           : null}
       </div>
     </>

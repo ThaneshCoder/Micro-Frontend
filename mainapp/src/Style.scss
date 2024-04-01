@@ -1,6 +1,7 @@
 $textsize: 20px;
 $textcolor: red;
 $fontstyle: italic;
+$textcolor1: white;
 
 .mytext{
     font-size:$textsize ;
@@ -10,4 +11,7 @@ color: $textcolor;
 }
 .myfont{
  font-style: $fontstyle;
+}
+.mytext1{
+    color: $textcolor1;
 }
