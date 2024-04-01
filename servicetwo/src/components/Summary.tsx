@@ -20,15 +20,14 @@ const Summary: React.FC<{
   decAction: any;
   removeAction: any;
 }> = ({ product, cartdispatch, incAction, decAction, removeAction }) => {
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);// sum of the cart 
 
-  const [signal, setSignal] = useState(false);
+  const [signal, setSignal] = useState(false);// update the qyt when count updated
 
   useEffect(() => {
     const totalPrice = product.reduce((accumulator, currentProduct) => {
       return accumulator + currentProduct.price * currentProduct.count;
     }, 0);
-
     setTotalPrice(totalPrice);
   }, [signal]);
 
@@ -76,7 +75,7 @@ const Summary: React.FC<{
               {product.map((cartProd, i) => (
                 <li key={cartProd.id} className="relative flex py-4 justify-between">
                   <div className="font-medium text-gray-900">
-                    {i + 1}).{cartProd.name}
+                    {i + 1}.{cartProd.name}
                   </div>
                   <div className="absolute font-medium text-gray-900 text-center left-1/2">
                     {cartProd.count}
@@ -104,18 +103,6 @@ const Summary: React.FC<{
               >
                 Checkout
               </a>
-            </div>
-            <div className="mt-3 flex justify-center text-center text-sm text-gray-500">
-              <p>
-                or{' '}
-                <button
-                  type="button"
-                  // onClick={()=>{navigate("Product")}}
-                  className="font-medium text-blue-600 hover:text-blue-500">
-                  Continue Shopping
-                  <span aria-hidden="true"> &rarr;</span>
-                </button>
-              </p>
             </div>
           </div>
         </div>

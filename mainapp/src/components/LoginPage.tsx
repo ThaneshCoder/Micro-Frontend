@@ -31,12 +31,12 @@ function LoginPage() {
   };
 
   return (
-    <div className="myfont">
-      <Container>
-        <form className="box">
-          <header className="mycolor">Login Page</header>
+    <div className="myfont h-screen flex justify-center align-middle ">
+        <form className="border-2 border-white p-5 w-72 h-64 mt-40">
+          <header className="mycolor pb-2">Login Page</header>
           <input
             placeholder="username"
+            className="p-2 rounded-md"
             {...register("username", {
               required: "Username is required",
               minLength: {
@@ -51,7 +51,7 @@ function LoginPage() {
           </div>
           <p className="h-5"></p>
           <input
-            className="mytext1"
+            className="mytext1 p-2 rounded-md "
             placeholder="password"
             {...register("password", {
               required: "Password is required",
@@ -71,7 +71,7 @@ function LoginPage() {
             <div style={{ color: "green" }}>Form submitted successfully!</div>
           )}
         </form>
-      </Container>
+    
     </div>
   );
 }
