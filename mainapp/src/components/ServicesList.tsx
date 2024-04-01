@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@mui/material";
 import { useNavigate } from "react-router";
 
-export const ServicesList = () => {
+const ServicesList = () => {
   const navigate = useNavigate();
   const gotoproduct = () => {
     navigate("/landingPage/Product");
@@ -11,13 +11,37 @@ export const ServicesList = () => {
     navigate("/landingPage/cart");
   };
   return (
-    <div>
-      <Card sx={{ minWidth: 275 }} onClick={gotoproduct}>
+    <div
+      style={{
+        marginTop: "20px",
+        display: "flex",
+        justifyContent: "space-evenly",
+      }}
+    >
+      <Card
+        sx={{
+          width: 200,
+          padding: 2,
+          color: "white",
+          backgroundColor: "#588BCE",
+        }}
+        onClick={gotoproduct}
+      >
         <CardContent>service one</CardContent>
       </Card>
-      <Card sx={{ minWidth: 275 }} onClick={gotocart}>
+
+      <Card
+        sx={{
+          width: 200,
+          padding: 2,
+          color: "white",
+          backgroundColor: "#588BCE",
+        }}
+        onClick={gotocart}
+      >
         <CardContent>service Two</CardContent>
       </Card>
     </div>
   );
 };
+export default ServicesList;

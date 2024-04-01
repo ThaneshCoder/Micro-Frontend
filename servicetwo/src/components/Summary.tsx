@@ -1,36 +1,55 @@
 import React, { useEffect, useState } from "react";
 import CartCard from "./CartCard";
-// import { useNavigate } from 'react-router';
 
 interface IndiValue {
-  id: number; name: string; model: string; price: number; discount: number; category: string; instock: number; count: number; image: string;
-
+  id: number;
+  name: string;
+  model: string;
+  price: number;
+  discount: number;
+  category: string;
+  instock: number;
+  count: number;
+  image: string;
 }
 
-const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: any, decAction: any, removeAction: any }> = ({ product, cartdispatch, incAction, decAction, removeAction }) => {
+const Summary: React.FC<{
+  product: IndiValue[];
+  cartdispatch: any;
+  incAction: any;
+  decAction: any;
+  removeAction: any;
+}> = ({ product, cartdispatch, incAction, decAction, removeAction }) => {
+  const [totalPrice, setTotalPrice] = useState(0);
 
-
-  const [totalPrice, setTotalPrice] = useState(0)
-
-  const [signal, setSignal] = useState(false)
-
-  // let navigate=useNavigate()
+  const [signal, setSignal] = useState(false);
 
   useEffect(() => {
     const totalPrice = product.reduce((accumulator, currentProduct) => {
-      return (accumulator + (currentProduct.price * currentProduct.count));
+      return accumulator + currentProduct.price * currentProduct.count;
     }, 0);
 
     setTotalPrice(totalPrice);
   }, [signal]);
 
   return (
-    <div className="sm:flex-grow md:flex lg:flex flex-wrap sm:justify-center md:lg:justify-start" >
+    <div className="sm:flex-grow md:flex lg:flex flex-wrap sm:justify-center md:lg:justify-start">
       <div className=" lg:w-7/12 md:w-6/12 sm:w-auto p-1">
-        {product ? product.map((cartProd) => (
-          <CartCard key={cartProd.id} singleProduct={cartProd} inc={incAction} dec={decAction} itemDispatch={cartdispatch} removeItem={removeAction} change={setSignal} />
-        )) : null}
+        {product
+          ? product.map((cartProd) => (
+              <CartCard
+                key={cartProd.id}
+                singleProduct={cartProd}
+                inc={incAction}
+                dec={decAction}
+                itemDispatch={cartdispatch}
+                removeItem={removeAction}
+                change={setSignal}
+              />
+            ))
+          : null}
       </div>
+
       <div className=" lg:w-5/12 md:w-5/12 mb-16" >
         <div className="flex flex-col lg:right-0 md:right-0  px-10  bg-white shadow-xl lg:fixed md:fixed lg:w-5/12 md:w-5/12" style={{ height: '88%' }}>
           <div className="text-3xl  font-medium text-gray-900 p-2 text-center w-full">Item Summary</div>
@@ -45,9 +64,15 @@ const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: an
               Rs.
             </div>
           </div>
-          <div className=" flex-1 overflow-y-auto px-4 py-1 sm:px-6" style={{ height: '70%' }}>
-
-            <ol role="list" type="1" className="-my-6 divide-y mt-2 divide-gray-200">
+          <div
+            className=" flex-1 overflow-y-auto px-4 py-1 sm:px-6"
+            style={{ height: "70%" }}
+          >
+            <ol
+              role="list"
+              type="1"
+              className="-my-6 divide-y mt-2 divide-gray-200"
+            >
               {product.map((cartProd, i) => (
                 <li key={cartProd.id} className="relative flex py-4 justify-between">
                   <div className="font-medium text-gray-900">
@@ -69,7 +94,9 @@ const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: an
               <p>Subtotal</p>
               <h1>{totalPrice} /- only</h1>
             </div>
-            <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+            <p className="mt-0.5 text-sm text-gray-500">
+              Shipping and taxes calculated at checkout.
+            </p>
             <div className="mt-3">
               <a
                 href="#"
@@ -91,10 +118,8 @@ const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: an
               </p>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   );
 };

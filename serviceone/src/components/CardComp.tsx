@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import SingleCard from "./SingleCard";
 
-// Define Product interface with a different name
+// Defined Product interface with a different name
 interface IndiValue {
   id: number;
   name: string;
