@@ -36,7 +36,7 @@ const CartCard: React.FC<CartCardProps> = ({ singleProduct, inc, dec, itemDispat
             Model :{singleProduct.model}
           </p>
           <p className=" text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600 text-nowrap">
-            <s>{singleProduct.price} Rs/ </s>{singleProduct.price}Rs/-
+            <s>{singleProduct.price*singleProduct.count} Rs/ </s>{Math.floor(singleProduct.price*singleProduct.count*singleProduct.discount/100)}Rs/-
           </p>
           <div className="text-gray-500">
             Only {singleProduct.instock} stock left !
@@ -53,8 +53,12 @@ const CartCard: React.FC<CartCardProps> = ({ singleProduct, inc, dec, itemDispat
           <span className='m-auto'>{singleProduct.count}</span>
           <button onClick={() => { itemDispatch(inc(singleProduct)) }} className=" block w-full rounded-md text-center text-2xl font-extrabold border-2 bg-zinc-700 text-white  hover:border-black hover:text-black hover:bg-white" style={{ width: '20%' }}>+</button>
         </div>  
-        <div className='flex'>
-          <button className="m-2 block w-full rounded-md px-1 py-2 text-center text-sm font-semibold border-2 bg-red-500 text-white shadow-sm hover:border-red-500 hover:text-red-500 hover:bg-white" onClick={() => { itemDispatch(removeItem(singleProduct)) }}>
+        <div className='flex p-5'>
+          <button className="m-2 block w-full rounded-md px-1 py-2 text-center text-sm font-semibold border-2 bg-red-500 text-white shadow-sm hover:border-red-500 hover:text-red-500 hover:bg-white"
+          onClick={() => { 
+            itemDispatch(removeItem(singleProduct)) 
+            change((prev) => !prev)
+          }}>
             Remove Item
           </button>
           <button className=" m-2 block w-full rounded-md px-1 py-2 text-center text-sm font-bold border-2 bg-blue-500 text-white shadow-sm border-blue-500 hover:text-blue-500 hover:bg-white ">
