@@ -1,4 +1,4 @@
-import "./App.css";
+
 // import jsonProd from '../../AllProduct.json'
 // import Summary from "./components/Summary";
 
