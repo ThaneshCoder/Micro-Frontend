@@ -6,12 +6,13 @@ import { useEffect, useState } from "react";
 
 // Define Product interface with a different name
 interface IndiValue {
+  id: number;
   name: string;
   model: string;
   price: number;
   discount: number;
   category: string;
-  total: number;
+  instock: number;
   image: string;
 }
 [];
@@ -24,8 +25,8 @@ interface mainProd {
 
 const CardComp: React.FC<mainProd> = ({
   product,
-  cartAction,
   cartdispatch,
+  cartAction,
 }) => {
   const [allProduct, setAllProduct] = useState<IndiValue[]>([]);
 
@@ -37,58 +38,53 @@ const CardComp: React.FC<mainProd> = ({
     <>
       <div className="flex flex-wrap justify-evenly">
         {allProduct
-          ? allProduct.map((prod, index: number) => (
-              <Card key={index} sx={{ maxWidth: 250, margin: "15px" }}>
-                <CardActionArea>
-                  <div className=" p-6 border-b-2" style={{ width: "100%" }}>
-                    <img
-                      src={prod.image}
-                      style={{ height: "300px", width: "300px" }}
-                      alt=""
-                    />
-                  </div>
-                  <div className="flex-col justify-between ">
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {prod.name}
-                      </Typography>
-                      <Typography gutterBottom variant="h6" component="div">
-                        {prod.model}
-                      </Typography>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="div"
-                      >
-                        Price: {prod.price}
-                      </Typography>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle2"
-                        component="div"
-                      >
-                        Discount: {prod.discount}
-                      </Typography>
-                      <Typography gutterBottom variant="h5" component="div">
-                        Category: {prod.category}
-                      </Typography>
-                      <Typography gutterBottom variant="h6" component="div">
-                        Quantity: {prod.total}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <button
-                        onClick={() => {
-                          cartdispatch(cartAction(index));
-                        }}
-                      >
-                        Add to Cart
-                      </button>
-                    </CardActions>
-                  </div>
-                </CardActionArea>
-              </Card>
-            ))
+          ? allProduct.map((prod) => (
+            <Card key={prod.id} sx={{ maxWidth: 250, margin: "15px", }}>
+              <CardActionArea>
+                <div className=" p-6 border-b-2" style={{ width: "100%" }}>
+                  <img
+                    src={prod.image}
+                    style={{ height: "150px", width: "200px" }}
+                    alt=""
+                  />
+                </div>
+                <div className="flex-col justify-between ">
+                  <CardContent>
+                    <Typography gutterBottom component="div">
+                      {prod.name}
+                    </Typography>
+                    <Typography gutterBottom component="div">
+                      {prod.model}
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="subtitle1"
+                      component="div"
+                    >
+                      Price: {prod.price}
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="subtitle2"
+                      component="div"
+                    >
+                      Discount: {prod.discount}
+                    </Typography>
+                    <Typography gutterBottom>
+                      Category: {prod.category}
+                    </Typography>
+                    <Typography gutterBottom>
+                      Quantity: {prod.instock}
+                    </Typography>
+                  </CardContent>
+                  <CardActions onClick={() => { cartdispatch(cartAction(prod.id));}} style={{width:"100%"}}>
+                    Add to Cart
+                  </CardActions>
+
+                </div>
+              </CardActionArea>
+            </Card>
+          ))
           : null}
       </div>
     </>

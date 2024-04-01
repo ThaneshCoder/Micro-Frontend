@@ -6,10 +6,10 @@ import { RootStore } from "./redux/Store";
 import { useDispatch, useSelector } from "react-redux";
 import CardComp from 'serviceone/CardComp';
 import Summary from 'servicetwo/Summary';
-import { cartActionData } from "./redux/ProductSlicer";
+import { cartItem, itemDec, itemInc, removeItem } from "./redux/ProductSlicer";
 
 function App() {
-  let selector = useSelector((state: RootStore) => state.product.allProducts);
+  let allProd = useSelector((state: RootStore) => state.product.allProducts);
   let cartProd = useSelector((state: RootStore) => state.product.cartProduct);
 
  let dispatch= useDispatch ()
@@ -21,8 +21,8 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="servicelist" element={<ServicesList />} />
           <Route path="landingPage" element={<LandingPage />} >
-            <Route path="Product" element={<CardComp product={selector} cartAction={cartActionData} cartdispatch= {dispatch} />} />
-            <Route path="cart" element={<Summary product={cartProd} />} />
+            <Route path="Product" element={<CardComp product={allProd} cartdispatch= {dispatch} cartAction={cartItem}  />} />
+            <Route path="cart" element={<Summary product={cartProd} cartdispatch= {dispatch} incAction={itemInc} decAction={itemDec} removeAction={removeItem}/>} />
           </Route>
         </Routes>
       </BrowserRouter>

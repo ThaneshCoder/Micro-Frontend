@@ -1,24 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// import prod from "../../../AllProduct.json";
-
-
-// let initialState = { allProducts: prod.AllProduct, cartProduct: {} };
-// let productSlicer = createSlice({
-//   name: "product",
-//   initialState,
-//   reducers: {
-//     // actions
-//     cartActionData: (state, action) => { 
-//         console.log(state);
-//     },
-//     cartIncrement: (state) => {},
-//     cartDecrement: (state) => {},
-//   },
-// });
-// export let { cartActionData, cartIncrement, cartDecrement } = productSlicer.actions; // destructuring of actions
-// export default productSlicer.reducer;
-
-
 import { createSlice } from "@reduxjs/toolkit";
 import prod from "../../../AllProduct.json";
 
@@ -27,20 +6,44 @@ interface ProductState {
   cartProduct: any; // Adjust the type according to your cartProduct structure
 }
 
-let initialState: ProductState = { allProducts: prod.AllProduct, cartProduct: {} };
+let initialState: ProductState = { allProducts: prod.AllProduct, cartProduct: [] };
 
 let productSlicer = createSlice({
   name: "product",
   initialState,
   reducers: {
-    cartActionData: (state, action) => {
-      console.log("Current State:", state); // Log the current state
-      // Make changes to the state here if needed
+    cartItem: (state, action) => {
+      if (!state.cartProduct.some((element: any) => element.id === action.payload)) {
+        state.cartProduct.push(...state.allProducts.filter(e => e.id === action.payload));
+      }
     },
-    cartIncrement: (state) => {},
-    cartDecrement: (state) => {},
+    itemInc: (state, action) => {
+      state.cartProduct.forEach((element: any) => {
+        if (element.id === action.payload.id) {
+          if (element.count < element.instock)
+            element.count++;
+        }
+      });
+
+    },
+    itemDec: (state, action) => {
+      state.cartProduct.forEach((element: any) => {
+        if (element.id === action.payload.id) {
+          if (element.count > 1)
+            element.count--;
+
+        }
+      });
+    },
+    removeItem: (state, action) => {
+      state.cartProduct.forEach((element: any, index: number) => {
+        if (element.id === action.payload.id) {
+          state.cartProduct.splice(index, 1)
+        }
+      })
+    },
   },
 });
 
-export const { cartActionData, cartIncrement, cartDecrement } = productSlicer.actions;
+export const { cartItem, itemInc, itemDec, removeItem } = productSlicer.actions;
 export default productSlicer.reducer;
