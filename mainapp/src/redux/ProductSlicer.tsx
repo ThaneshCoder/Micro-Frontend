@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import prod from "../../../AllProduct.json";
-import { Snackbar } from "@mui/material";
 
 interface ProductState {
   allProducts: any[]; // To display all products in serviceone
@@ -16,9 +15,6 @@ let productSlicer = createSlice({
     cartItem: (state, action) => {
       if (!state.cartProduct.some((element: any) => element.id === action.payload)) {
         state.cartProduct.push(...state.allProducts.filter(e => e.id === action.payload));
-      }
-      else{
-       alert ("already added");  
       }
     },
     // Increment function

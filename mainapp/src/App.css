@@ -6,11 +6,3 @@ body {
   background-attachment: fixed;
   
 }
-.box{
-  width: fit-content;
-  height: fit-content;
-    padding: 30px;
-    border: 4px solid #ccc;
-    margin-top: 200px;
-    margin-left: 700px;
-}

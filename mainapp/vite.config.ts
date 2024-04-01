@@ -9,8 +9,10 @@ export default defineConfig({
     federation({
       name: "mainapp",
       remotes: {
-        serviceone: "http://localhost:5001/assets/remoteEntryOne.js",
-        servicetwo: "http://localhost:5002/assets/remoteEntryTwo.js",
+        serviceone: "http://localhost:5001/assets/remoteEntryOne.js",//(product)
+        servicetwo: "http://localhost:5002/assets/remoteEntryTwo.js",//(cart)
+        servicethree:"http://localhost:5003/assets/remoteEntryThree.js",//(payment)
+        servicefour: "http://localhost:5004/assets/remoteEntryFour.js",//(support)
       },
       shared: ["react"],
     }),
