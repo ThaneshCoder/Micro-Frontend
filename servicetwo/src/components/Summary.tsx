@@ -34,9 +34,12 @@ const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: an
       <div className=" lg:w-5/12 md:w-5/12 mb-16" >
         <div className="flex flex-col lg:right-0 md:right-0  px-10  bg-white shadow-xl lg:fixed md:fixed lg:w-5/12 md:w-5/12" style={{ height: '88%' }}>
           <div className="text-3xl  font-medium text-gray-900 p-2 text-center w-full">Item Summary</div>
-          <div className="flex justify-between pb-2  border-b-2">
+          <div className="relative flex justify-between pb-2  border-b-2">
             <div className="text-2xl text-gray-900 text-center w-2/5 ">
               Product
+            </div>
+            <div className="absolute text-2xl text-gray-900 text-center left-1/2">
+              Qty
             </div>
             <div className="text-2xl text-gray-900 text-center w-2/5 ">
               Rs.
@@ -46,12 +49,15 @@ const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: an
 
             <ol role="list" type="1" className="-my-6 divide-y mt-2 divide-gray-200">
               {product.map((cartProd, i) => (
-                <li key={cartProd.id} className="flex py-4 ">
-                  <div className="font-medium text-gray-900 text-right">
+                <li key={cartProd.id} className="relative flex py-4 justify-between">
+                  <div className="font-medium text-gray-900">
                     {i + 1}).{cartProd.name}
                   </div>
-                  <div className="flex-grow font-medium text-gray-900 text-right">
-                    {cartProd.price * cartProd.count}
+                  <div className="absolute font-medium text-gray-900 text-center left-1/2">
+                    {cartProd.count}
+                  </div>
+                  <div className="font-medium text-gray-900">
+                    {Math.floor(cartProd.price*cartProd.count*cartProd.discount/100)}
                   </div>
                 </li>
               ))}
@@ -67,7 +73,7 @@ const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: an
             <div className="mt-3">
               <a
                 href="#"
-                className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                className="flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
               >
                 Checkout
               </a>
@@ -78,7 +84,7 @@ const Summary: React.FC<{ product: IndiValue[], cartdispatch: any, incAction: an
                 <button
                   type="button"
                   // onClick={()=>{navigate("Product")}}
-                  className="font-medium text-indigo-600 hover:text-indigo-500">
+                  className="font-medium text-blue-600 hover:text-blue-500">
                   Continue Shopping
                   <span aria-hidden="true"> &rarr;</span>
                 </button>

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import prod from "../../../AllProduct.json";
+import { Snackbar } from "@mui/material";
 
 interface ProductState {
   allProducts: any[]; // Adjust the type according to your product structure
