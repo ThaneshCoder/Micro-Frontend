@@ -6,6 +6,7 @@ import { RootStore } from "./redux/Store";
 import { useDispatch, useSelector } from "react-redux";
 import CardComp from "serviceone/CardComp";
 import Summary from "servicetwo/Summary";
+import Support from "servicetwo/Support";
 import { cartItem, itemDec, itemInc, removeItem } from "./redux/ProductSlicer";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div>
+      {/* <Support/> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
