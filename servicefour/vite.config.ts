@@ -9,7 +9,7 @@ export default defineConfig({
       name: "servicefour",
       filename: "remoteEntryFour.js",
       exposes: {
-        "./App": "./src/App.tsx",
+        "./Support": "./src/component/Support.tsx",
       },
       shared: ["react"],
     }),
