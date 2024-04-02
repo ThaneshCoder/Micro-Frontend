@@ -1,11 +1,12 @@
 import LoginPage from "./components/LoginPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import  ServicesList  from "./components/ServicesList";
+import ServicesList from "./components/ServicesList";
 import LandingPage from "./components/Heading";
 import { RootStore } from "./redux/Store";
 import { useDispatch, useSelector } from "react-redux";
 import CardComp from "serviceone/CardComp";
 import Summary from "servicetwo/Summary";
+import Payment from "servicethree/Payment";
 import { cartItem, itemDec, itemInc, removeItem } from "./redux/ProductSlicer";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                 />
               }
             />
+            <Route path="payment" element={<Payment />} />
           </Route>
         </Routes>
       </BrowserRouter>

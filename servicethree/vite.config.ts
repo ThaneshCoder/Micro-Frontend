@@ -10,7 +10,7 @@ export default defineConfig({
       name: "servicethree",
       filename: "remoteEntryThree.js",
       exposes: {
-        "./App": "./src/App.tsx",
+        "./Payment": "./src/component/Payment.tsx",
       },
       shared: ["react"],
     }),
