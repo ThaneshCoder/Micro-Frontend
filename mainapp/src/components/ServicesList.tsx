@@ -3,13 +3,31 @@ import { useNavigate } from "react-router";
 
 const ServicesList = () => {
   const navigate = useNavigate();
-  const gotoproduct = () => {
-    navigate("/landingPage/Product");
-  };
+  // const gotoproduct = () => {
+  //   navigate("/landingPage/Product");
+  // };
 
-  const gotocart = () => {
-    navigate("/landingPage/cart");
-  };
+  // const gotocart = () => {
+  //   navigate("/landingPage/cart");
+  // };
+
+   let serviceList = ["Product ", "cart" ,"payment" ,"support"]
+
+   const allServices =(page:any,idx:number)=>{
+return(
+  <Card
+        sx={{
+          width: 200,
+          padding: 2,
+          color: "white",
+          backgroundColor: "#588BCE",
+        }}
+        onClick={()=>{navigate(`/landingPage/${page}`)}}
+      >
+        <CardContent>service {idx+1}({page})</CardContent>
+      </Card>
+)
+   }
   return (
     <div
       style={{
@@ -18,29 +36,11 @@ const ServicesList = () => {
         justifyContent: "space-evenly",
       }}
     >
-      <Card
-        sx={{
-          width: 200,
-          padding: 2,
-          color: "white",
-          backgroundColor: "#588BCE",
-        }}
-        onClick={gotoproduct}
-      >
-        <CardContent>service one</CardContent>
-      </Card>
+      {serviceList.map((val,idx)=>
+    allServices(val ,idx)
+      
+      )}
 
-      <Card
-        sx={{
-          width: 200,
-          padding: 2,
-          color: "white",
-          backgroundColor: "#588BCE",
-        }}
-        onClick={gotocart}
-      >
-        <CardContent>service Two</CardContent>
-      </Card>
     </div>
   );
 };
