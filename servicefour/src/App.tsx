@@ -1,12 +1,11 @@
-import './App.css'
+import Support from "./component/Support"
 
 function App() {
   
-
   return (
-    <>
-      its me service 4
-    </>
+    <div className="bg-blue-700 h-screen w-screen">
+      <Support/>
+    </div>
   )
 }
 
