@@ -1,6 +1,8 @@
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import PaymentIcon from "@mui/icons-material/Payment";
 import { Outlet, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { RootStore } from "../redux/Store";
@@ -18,8 +20,7 @@ const LandingPage = () => {
               Welcome
             </Typography>
             <div className="ml-auto flex items-center text-white">
-              <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-              </div>
+              <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"></div>
 
               <div
                 className="relative right-10 cursor-pointer ml-8 flow-root lg:ml-16 text-base hover:text-lg"
@@ -41,6 +42,17 @@ const LandingPage = () => {
                   </p>
                 </div>
                 <ShoppingCartIcon />
+              </div>
+              <div
+                onClick={() => {
+                  console.log("goooo");
+                  navigate("./payment");
+                }}
+              >
+                <PaymentIcon />
+              </div>
+              <div>
+                <SupportAgentIcon />
               </div>
             </div>
           </Toolbar>
