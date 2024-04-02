@@ -11,17 +11,13 @@ function Support() {
   };
 
   return (
-    <div className='w-screen h-screen flex justify-end items-end'>
-      <div className={"fixed border-2  m-5 p-3 h-16 w-16 rounded-2xl shadow-md cursor-pointer shadow-white "} onClick={handleClick}>
 
-        <ContactSupportOutlinedIcon sx={{ height: "100%", width: '100%', color: 'white' }} />
-
-      </div>
+    <div className={"fixed border-2 border-black p-1 h-10 w-10 rounded-2xl shadow-md cursor-pointer shadow-white z-10 bg-white bottom-1"} onClick={handleClick}>
+      <ContactSupportOutlinedIcon sx={{ height: "100%", width: '100%', color: 'blue' }} />
       {
-        open ? <div className='fixed border-2 m-5 mb-20 overflow-y-auto rounded-xl bg-slate-50 p-5'><DialogueBox close={setOpen} /></div> : null
+        open ? <div className='fixed border-2 bottom-12 overflow-y-auto rounded-xl bg-slate-50 p-5 -z-10'><DialogueBox close={setOpen} /></div> : null
       }
     </div>
-
   )
 }
 
