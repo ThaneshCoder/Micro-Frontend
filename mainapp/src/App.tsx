@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CardComp from "serviceone/CardComp";
 import Summary from "servicetwo/Summary";
 import Payment from "servicethree/Payment";
-import Support from "servicetwo/Support";
+import Support from "servicefour/Support";
 import { cartItem, itemDec, itemInc, removeItem } from "./redux/ProductSlicer";
 
 function App() {
@@ -18,7 +18,6 @@ function App() {
 
   return (
     <div>
-      {/* <Support/> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -45,8 +44,11 @@ function App() {
                   removeAction={removeItem}
                 />
               }
-            />
-            <Route path="payment" element={<Payment />} />
+            >
+              <Route path="payment" element={<Payment />} />
+            </Route>
+
+            <Route path="support" element={<Support />} />
           </Route>
         </Routes>
       </BrowserRouter>
