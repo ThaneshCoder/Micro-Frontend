@@ -4,6 +4,8 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import { Outlet, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { RootStore } from "../redux/Store";
+import Support from "servicefour/Support";
+
 
 const LandingPage = () => {
   let cartProd = useSelector((state: RootStore) => state.product.cartProduct);
@@ -46,8 +48,11 @@ const LandingPage = () => {
           </Toolbar>
         </AppBar>
       </Box>
+
       <div style={{ marginTop: "68px" }}>
+      <Support/>
         <Outlet />
+
       </div>
     </div>
   );

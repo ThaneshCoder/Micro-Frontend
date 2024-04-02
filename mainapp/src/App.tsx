@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CardComp from "serviceone/CardComp";
 import Summary from "servicetwo/Summary";
 import Payment from "servicethree/Payment";
-import Support from "servicetwo/Support";
+import Support from "servicefour/Support";
 import { cartItem, itemDec, itemInc, removeItem } from "./redux/ProductSlicer";
 
 function App() {
