@@ -1,17 +1,28 @@
+import React, { Dispatch, SetStateAction } from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-import { Container } from "@mui/material";
 import "../App.css";
 import "../Style.scss";
 import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { RootStore } from "../redux/Store";
+import { storeUser } from '../redux/UserSlicer';
 
 type Inputs = {
   username: string;
   password: string;
 };
+type AllUser = {
+  username: string;
+  password: string;
+};
 
-function LoginPage() {
+const LoginPage = () => {
+  let allUser = useSelector((state: RootStore) => state.user.allUser);
+
+  let dispatch = useDispatch();
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -21,9 +32,17 @@ function LoginPage() {
   const [submitted, setSubmitted] = useState<boolean>(false);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    setSubmitted(true);
-    navigate("./servicelist");
+    let flag=false;
+    allUser.forEach((e:AllUser)=>{
+      if(e.username===data.username && e.password===data.password){
+        setSubmitted(true);
+        dispatch(storeUser(e))
+        flag=true
+        navigate("./servicelist");
+      }
+    });
+    flag?console.log("User Logged In"):console.log("Invalid Data")
+    
     setTimeout(() => {
       setSubmitted(false);
       reset(); // Clear form data

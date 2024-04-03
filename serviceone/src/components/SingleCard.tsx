@@ -25,11 +25,19 @@ const SingleCard: React.FC<CartCardProps> = ({ singleProduct, addCart, cartDispa
     const [toast, setToast] = React.useState({ type: false, count: 0 });
 
     const handleClick = () => {
-        toast.count > 0 ? setToast({ type: true, count: toast.count + 1}) : setToast((prev) => ({ ...prev, count: toast.count + 1 }))
+        toast.count > 0 ? setToast({ type: true, count: toast.count + 1 }) : setToast((prev) => ({ ...prev, count: toast.count + 1 }))
     };
 
-    const handleClose = () => {setToast((prev) => ({ ...prev, type: false }));}
+    const handleClose = () => { setToast((prev) => ({ ...prev, type: false })); }
 
+    let myAlert = (type:any,message:string) => {
+        return <Snackbar open={toast.type} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            autoHideDuration={2000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity={type} variant="filled" sx={{ width: '50vw' }}>
+                {singleProduct.name} {singleProduct.model} {message}
+            </Alert>
+        </Snackbar>
+    }
     return (
         <Card key={singleProduct.id} sx={{ maxWidth: 250, margin: "15px", }}>
             <div className=" p-6 border-b-2" style={{ width: "100%" }}>
@@ -70,21 +78,13 @@ const SingleCard: React.FC<CartCardProps> = ({ singleProduct, addCart, cartDispa
                 </CardContent>
 
                 <Button onClick={() => {
-                    cartDispatch(addCart(singleProduct.id)); 
+                    cartDispatch(addCart(singleProduct));
                     handleClick();
                 }} style={{ width: "100%" }
                 }> Add to Cart</Button>
-                <Snackbar open={toast.type} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-                    autoHideDuration={2000} onClose={handleClose}>
-                    <Alert
-                        onClose={handleClose}
-                        severity="warning"
-                        variant="filled"
-                        sx={{ width: '50vw' }}
-                    >
-                        {singleProduct.name} ({singleProduct.model}) is Already Added
-                    </Alert>
-                </Snackbar>
+    {
+       toast.count > 0 ?  myAlert('warning','is Already Added'): myAlert('success','is Sucessfully Added')
+    }
             </div>
         </Card>
     )

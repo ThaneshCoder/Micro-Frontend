@@ -8,9 +8,14 @@ import { useSelector } from "react-redux";
 import { RootStore } from "../redux/Store";
 import Support from "servicefour/Support";
 
+interface userDataProps {
+  userData: any;
+}
 
-const LandingPage = () => {
-  let cartProd = useSelector((state: RootStore) => state.product.cartProduct);
+const LandingPage: React.FC<userDataProps> = ({ userData }) => {
+
+  let singleUser = useSelector((state: RootStore) => state.user.singleUser);
+
   const navigate = useNavigate();
 
   return (
@@ -19,13 +24,11 @@ const LandingPage = () => {
         <AppBar position="fixed">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Welcome
+              Welcome ({userData.username})
             </Typography>
             <div className="ml-auto flex items-center text-white">
-              <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"></div>
-
               <div
-                className="relative right-10 cursor-pointer ml-8 flow-root lg:ml-16 text-base hover:text-lg"
+                className="relative right-5 cursor-pointer flow-root lg:ml-16 text-base hover:text-lg"
                 onClick={() => {
                   navigate("/landingPage/product");
                 }}
@@ -33,27 +36,32 @@ const LandingPage = () => {
                 <LocalMallOutlinedIcon />
               </div>
               <div
-                className="relative right-10 cursor-pointer ml-8 flow-root"
+                className="relative right-5 cursor-pointer ml-10 flow-root"
                 onClick={() => {
                   navigate("/landingPage/cart");
                 }}
               >
-                <div className="t-0 absolute left-6">
+                <div className="absolute ml-6 ">
                   <p className="flex h-2 w-2 items-center justify-center rounded-full bg-white p-3 text-xs text-blue-900">
-                    {cartProd.length}
+                    {singleUser.userCartProd.length}
                   </p>
                 </div>
                 <ShoppingCartIcon />
               </div>
               <div
+                className="relative right-5 cursor-pointer ml-8 flow-root lg:ml-16 text-base hover:text-lg"
                 onClick={() => {
-                  console.log("goooo");
-                  navigate("./payment");
+                  navigate("/landingPage/payment");
                 }}
               >
                 <PaymentIcon />
               </div>
-              <div>
+              <div
+                className="relative right-5 cursor-pointer ml-4 flow-root lg:ml-16 text-base hover:text-lg"
+                onClick={() => {
+                  navigate("/landingPage/support");
+                }}
+              >
                 <SupportAgentIcon />
               </div>
             </div>
@@ -62,7 +70,7 @@ const LandingPage = () => {
       </Box>
 
       <div style={{ marginTop: "68px" }}>
-      <Support/>
+        <Support />
         <Outlet />
 
       </div>

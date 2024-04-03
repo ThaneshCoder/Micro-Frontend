@@ -14,18 +14,35 @@ interface IndiValue {
 }
 
 const Summary: React.FC<{
-  product: IndiValue[];
+  userData:{userCartProd:IndiValue[];};
   cartdispatch: any;
   incAction: any;
   decAction: any;
   removeAction: any;
-}> = ({ product, cartdispatch, incAction, decAction, removeAction }) => {
+}> = ({userData, cartdispatch, incAction, decAction, removeAction }) => {
+
   const [totalPrice, setTotalPrice] = useState(0); // sum of the cart
 
   const [signal, setSignal] = useState(false); // update the qyt when count updated
 
+  // useEffect(() => {
+  //   console.log(userData.userCartProd)
+  //   console.log(product)
+
+  //   const filteredProducts = product.filter(e =>userData.userCartProd.some(f => e.id === f.id));
+  //   console.log(filteredProducts);
+    
+  //   // const filteredProducts = product.filter((e) => userCart.userCartProd.includes(e.id));
+  //   setCartProduct(filteredProducts);
+
+
+  //   }, [userData])
+  
+
   useEffect(() => {
-    const totalPrice = product.reduce((accumulator, currentProduct) => {
+    console.log(userData.userCartProd);
+    
+    const totalPrice = userData.userCartProd.reduce((accumulator, currentProduct) => {
       return accumulator + currentProduct.price * currentProduct.count;
     }, 0);
     setTotalPrice(totalPrice);
@@ -34,8 +51,8 @@ const Summary: React.FC<{
   return (
     <div className="sm:flex-grow md:flex lg:flex flex-wrap sm:justify-center md:lg:justify-start">
       <div className=" lg:w-7/12 md:w-6/12 sm:w-auto p-1">
-        {product
-          ? product.map((cartProd) => (
+        {userData.userCartProd
+          ? userData.userCartProd.map((cartProd) => (
               <CartCard
                 key={cartProd.id}
                 singleProduct={cartProd}
@@ -75,7 +92,7 @@ const Summary: React.FC<{
               type="1"
               className="-my-6 divide-y mt-2 divide-gray-200"
             >
-              {product.map((cartProd, i) => (
+              {userData.userCartProd.map((cartProd, i) => (
                 <li
                   key={cartProd.id}
                   className="relative flex py-4 justify-between"
