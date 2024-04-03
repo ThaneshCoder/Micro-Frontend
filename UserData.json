@@ -1,0 +1,18 @@
+{
+    "UserData": [
+      { "userId":1,
+        "username": "thanesh",
+        "password": "12345678",
+        "mailId":"Thanesh@123",
+        "userCartProd":[],
+        "userOrderProd":[]
+      },
+      { "userId":2,
+        "username": "snehaa",
+        "password": "87654321",
+        "mailId":"",
+        "userCartProd":[],
+        "userOrderProd":[]
+      }
+    ]
+}

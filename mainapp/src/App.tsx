@@ -8,11 +8,11 @@ import CardComp from "serviceone/CardComp";
 import Summary from "servicetwo/Summary";
 import Payment from "servicethree/Payment";
 import Support from "servicefour/Support";
-import { cartItem, itemDec, itemInc, removeItem } from "./redux/ProductSlicer";
+import { addToCart, itemDec, itemInc, removeItem } from "./redux/UserSlicer";
 
 function App() {
   let allProd = useSelector((state: RootStore) => state.product.allProducts);
-  let cartProd = useSelector((state: RootStore) => state.product.cartProduct);
+  let singleUser = useSelector((state: RootStore) => state.user.singleUser);
 
   let dispatch = useDispatch();
 
@@ -21,35 +21,28 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
-          <Route path="servicelist" element={<ServicesList />} />
-          <Route path="landingPage" element={<LandingPage />}>
-            <Route
-              path="Product"
-              element={
-                <CardComp
-                  product={allProd}
-                  cartdispatch={dispatch}
-                  cartAction={cartItem}
-                />
-              }
+          {
+           singleUser?<>
+            <Route path="servicelist" element={<ServicesList />} />
+          <Route path="landingPage" element={<LandingPage userData={singleUser}/>}>
+            <Route path="Product" element={<CardComp product={allProd} cartdispatch={dispatch} cartAction={addToCart} />} />
+            <Route path="cart" element={<Summary
+              product={allProd}
+              userData={singleUser}
+              cartdispatch={dispatch}
+              incAction={itemInc}
+              decAction={itemDec}
+              removeAction={removeItem}
+              />}
             />
-            <Route
-              path="cart"
-              element={
-                <Summary
-                  product={cartProd}
-                  cartdispatch={dispatch}
-                  incAction={itemInc}
-                  decAction={itemDec}
-                  removeAction={removeItem}
-                />
-              }
-            >
-              <Route path="payment" element={<Payment />} />
-            </Route>
-
+            <Route path="payment" element={<Payment />} />
             <Route path="support" element={<Support />} />
+         
           </Route>
+           </>:null
+              
+          }
+          
         </Routes>
       </BrowserRouter>
     </div>

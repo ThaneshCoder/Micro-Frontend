@@ -16,37 +16,9 @@ let productSlicer = createSlice({
       if (!state.cartProduct.some((element: any) => element.id === action.payload)) {
         state.cartProduct.push(...state.allProducts.filter(e => e.id === action.payload));
       }
-    },
-    // Increment function
-    itemInc: (state, action) => {
-      state.cartProduct.forEach((element: any) => {
-        if (element.id === action.payload.id) {
-          if (element.count < element.instock)
-            element.count++;
-        }
-      });
-
-    },
-    // Decrement function
-    itemDec: (state, action) => {
-      state.cartProduct.forEach((element: any) => {
-        if (element.id === action.payload.id) {
-          if (element.count > 1)
-            element.count--;
-
-        }
-      });
-    },
-    // Remove item function 
-    removeItem: (state, action) => {
-      state.cartProduct.forEach((element: any, index: number) => {
-        if (element.id === action.payload.id) {
-          state.cartProduct.splice(index, 1)
-        }
-      })
-    },
+    }
   },
 });
 
-export const { cartItem, itemInc, itemDec, removeItem } = productSlicer.actions;
+export const { cartItem } = productSlicer.actions;
 export default productSlicer.reducer;
