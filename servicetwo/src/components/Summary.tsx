@@ -14,36 +14,24 @@ interface IndiValue {
 }
 
 const Summary: React.FC<{
-  userData:{userCartProd:IndiValue[];};
+  userData: { userCartProd: IndiValue[]; };
   cartdispatch: any;
   incAction: any;
   decAction: any;
   removeAction: any;
-}> = ({userData, cartdispatch, incAction, decAction, removeAction }) => {
+  navi: any;
+}> = ({ userData, cartdispatch, incAction, decAction, removeAction, navi }) => {
 
   const [totalPrice, setTotalPrice] = useState(0); // sum of the cart
 
   const [signal, setSignal] = useState(false); // update the qyt when count updated
 
-  // useEffect(() => {
-  //   console.log(userData.userCartProd)
-  //   console.log(product)
-
-  //   const filteredProducts = product.filter(e =>userData.userCartProd.some(f => e.id === f.id));
-  //   console.log(filteredProducts);
-    
-  //   // const filteredProducts = product.filter((e) => userCart.userCartProd.includes(e.id));
-  //   setCartProduct(filteredProducts);
-
-
-  //   }, [userData])
-  
-
   useEffect(() => {
     console.log(userData.userCartProd);
-    
+
     const totalPrice = userData.userCartProd.reduce((accumulator, currentProduct) => {
-      return accumulator + currentProduct.price * currentProduct.count;
+      return accumulator + (currentProduct.price * currentProduct.count * currentProduct.discount /
+        100);
     }, 0);
     setTotalPrice(totalPrice);
   }, [signal]);
@@ -53,16 +41,16 @@ const Summary: React.FC<{
       <div className=" lg:w-7/12 md:w-6/12 sm:w-auto p-1">
         {userData.userCartProd
           ? userData.userCartProd.map((cartProd) => (
-              <CartCard
-                key={cartProd.id}
-                singleProduct={cartProd}
-                inc={incAction}
-                dec={decAction}
-                itemDispatch={cartdispatch}
-                removeItem={removeAction}
-                change={setSignal}
-              />
-            ))
+            <CartCard
+              key={cartProd.id}
+              singleProduct={cartProd}
+              inc={incAction}
+              dec={decAction}
+              itemDispatch={cartdispatch}
+              removeItem={removeAction}
+              change={setSignal}
+            />
+          ))
           : null}
       </div>
 
@@ -104,9 +92,9 @@ const Summary: React.FC<{
                     {cartProd.count}
                   </div>
                   <div className="font-medium text-gray-900">
-                    {Math.floor(
+                    {Math.ceil(
                       (cartProd.price * cartProd.count * cartProd.discount) /
-                        100
+                      100
                     )}
                   </div>
                 </li>
@@ -117,17 +105,16 @@ const Summary: React.FC<{
           <div className="border-t border-gray-200 px-4 py-2 sm:px-6">
             <div className="flex justify-between text-base font-medium py-2 text-gray-900">
               <p>Subtotal</p>
-              <h1>{totalPrice} /- only</h1>
+              <h1>{Math.ceil(totalPrice)} /- only</h1>
             </div>
             <p className="mt-0.5 text-sm text-gray-500">
               Shipping and taxes calculated at checkout.
             </p>
-            <div
-              className="mt-3"
+            <div className="flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 cursor-pointer"
+              onClick={
+                () => { navi("/landingPage/payment"); }}
             >
-              <a className="flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-6 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700">
-                Checkout
-              </a>
+              Checkout
             </div>
           </div>
         </div>

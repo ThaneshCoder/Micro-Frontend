@@ -23,11 +23,9 @@ let userSlicer = createSlice({
             state.singleUser = action.payload
         },
         addToCart: (state, action) => {
-            // if (!state.singleUser.userCartProd.some((element: any) => element.id === action.payload.id)) {
                 if (!state.singleUser.userCartProd.some((element: any) => element.id === action.payload.id)){
                     state.singleUser.userCartProd.push(action.payload)
                 }
-            // }
         },
         // Increment function
         itemInc: (state, action) => {

@@ -1,4 +1,3 @@
-import React, { Dispatch, SetStateAction } from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import "../App.css";
@@ -12,6 +11,7 @@ type Inputs = {
   username: string;
   password: string;
 };
+
 type AllUser = {
   username: string;
   password: string;

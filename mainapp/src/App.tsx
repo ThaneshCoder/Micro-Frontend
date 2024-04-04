@@ -1,5 +1,5 @@
 import LoginPage from "./components/LoginPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import ServicesList from "./components/ServicesList";
 import LandingPage from "./components/Heading";
 import { RootStore } from "./redux/Store";
@@ -16,9 +16,10 @@ function App() {
 
   let dispatch = useDispatch();
 
+  let navigator=useNavigate()
+
   return (
-    <div>
-      <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<LoginPage />} />
           {
@@ -33,10 +34,11 @@ function App() {
               incAction={itemInc}
               decAction={itemDec}
               removeAction={removeItem}
+              navi={navigator}
               />}
             />
-            <Route path="payment" element={<Payment />} />
-            <Route path="support" element={<Support />} />
+            <Route path="payment" element={<Payment userData={singleUser}/>} />
+            <Route path="support" element={<Support userData={singleUser}/>} />
          
           </Route>
            </>:null
@@ -44,8 +46,6 @@ function App() {
           }
           
         </Routes>
-      </BrowserRouter>
-    </div>
   );
 }
 
