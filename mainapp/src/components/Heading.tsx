@@ -27,6 +27,7 @@ const LandingPage: React.FC<userDataProps> = ({ userData }) => {
               Welcome ({userData.username})
             </Typography>
             <div className="ml-auto flex items-center text-white">
+
               <div
                 className="relative right-5 cursor-pointer flow-root lg:ml-16 text-base hover:text-lg"
                 onClick={() => {
@@ -69,8 +70,11 @@ const LandingPage: React.FC<userDataProps> = ({ userData }) => {
         </AppBar>
       </Box>
 
-      <div style={{ marginTop: "68px" }}>
-        <Support />
+
+      <div style={{ marginTop: "68px"}}>
+      {/* <Demo/> */}
+
+        <Support userData={singleUser}/>
         <Outlet />
 
       </div>
