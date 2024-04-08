@@ -24,7 +24,7 @@ const Payment: React.FC<any> = ({userData}) => {
   };
   return (
     <div className="h-full w-full bg-blue-300">
-        <div className="py-5 px-2 bg-blue-600 text-white text-2xl">
+        <div className="py-5 px-2 bg-white text-blue-600 text-2xl">
           <span className="p-5"> Amount to be Paid : {Math.ceil(totalPrice)}</span>
         </div>
         <div className="border-solid border-4 p-5">
