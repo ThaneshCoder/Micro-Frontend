@@ -9,9 +9,10 @@ let DialogueBox: React.FC<{close:any,user:any}> = ({ close,user }) => {
         size="small"
         aria-label="close"
         color="inherit"
-        onClick={close}
+        // sx={{}}
+  
       >
-        <CloseIcon fontSize="small" />
+        <CloseIcon fontSize="small" onClick={close}/>
       </IconButton>
       <h1>Hello {user.username}</h1>
         </div>
