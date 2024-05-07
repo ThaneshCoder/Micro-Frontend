@@ -1,4 +1,3 @@
-import logo from '../assets/fireflinkLogo.png'
 import { useForm, SubmitHandler } from "react-hook-form";
 import "../App.css";
 import "../Style.scss";
@@ -80,11 +79,6 @@ export default function LoginComp() {
           <WordRenderer words={words} />
         </div>
         <div className=" bg-slate-100 p-10 m-16 bg-opacity-75 rounded-lg">
-          <img
-            className="mx-auto h-14 w-72"
-            src={logo}
-            alt="Your Company"
-          />
           <h2 className="my-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Log in to your account
           </h2>

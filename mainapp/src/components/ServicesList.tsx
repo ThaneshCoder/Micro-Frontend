@@ -3,15 +3,8 @@ import { useNavigate } from "react-router";
 
 const ServicesList = () => {
   const navigate = useNavigate();
-  // const gotoproduct = () => {
-  //   navigate("/landingPage/Product");
-  // };
 
-  // const gotocart = () => {
-  //   navigate("/landingPage/cart");
-  // };
-
-  let serviceList = ["Product ", "cart", "payment", "support"]
+  let serviceList = ["Product ", "cart", "payment", "support"];
 
   const allServices = (page: any, idx: number) => {
     return (
@@ -23,12 +16,16 @@ const ServicesList = () => {
           color: "white",
           backgroundColor: "#588BCE",
         }}
-        onClick={() => { navigate(`/landingPage/${page}`) }}
+        onClick={() => {
+          navigate(`/landingPage/${page}`);
+        }}
       >
-        <CardContent>service {idx + 1}({page})</CardContent>
+        <CardContent>
+          service {idx + 1}({page})
+        </CardContent>
       </Card>
-    )
-  }
+    );
+  };
   return (
     <div
       style={{
@@ -37,11 +34,7 @@ const ServicesList = () => {
         justifyContent: "space-evenly",
       }}
     >
-      {serviceList.map((val, idx) =>
-        allServices(val, idx)
-
-      )}
-
+      {serviceList.map((val, idx) => allServices(val, idx))}
     </div>
   );
 };
